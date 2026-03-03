@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Holi Bestie 🌈</title>
+
+<style>
+body{
+    margin:0;
+    padding:0;
+    font-family:'Segoe UI',sans-serif;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:black;
+    overflow:hidden;
+    color:white;
+}
+
+/* Container */
+.container{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:30px;
+    text-align:center;
+    flex-wrap:wrap;
+    z-index:2;
+}
+
+/* Side Images */
+.side-img{
+    width:170px;
+    height:240px;
+    object-fit:cover;
+    border-radius:20px;
+    box-shadow:0 0 20px rgba(255,255,255,0.3);
+}
+
+/* Center Box */
+.center-box{
+    background:rgba(255,255,255,0.1);
+    backdrop-filter:blur(10px);
+    padding:30px;
+    border-radius:20px;
+    width:280px;
+}
+
+button{
+    margin-top:15px;
+    padding:10px 20px;
+    border:none;
+    border-radius:20px;
+    font-size:16px;
+    cursor:pointer;
+    background:#ff4081;
+    color:white;
+    font-weight:bold;
+}
+
+/* Final Message */
+#finalMessage{
+    display:none;
+    font-size:32px;
+    font-weight:bold;
+    text-align:center;
+    animation:pop 1.5s ease forwards;
+}
+
+@keyframes pop{
+    0%{transform:scale(0);opacity:0;}
+    100%{transform:scale(1);opacity:1;}
+}
+
+/* Gulal Particles */
+.gulal{
+    position:absolute;
+    width:15px;
+    height:15px;
+    border-radius:50%;
+    opacity:0.8;
+    animation:fly 3s linear forwards;
+}
+
+@keyframes fly{
+    0%{
+        transform:translateY(0) scale(1);
+        opacity:1;
+    }
+    100%{
+        transform:translateY(-400px) scale(2);
+        opacity:0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container" id="mainContent">
+
+    <img src="C:\Users\Dell\OneDrive\Desktop\Holi\pic1.jpeg" class="side-img">
+
+    <div class="center-box">
+        <h2>Happy Holi 🌸</h2>
+        <p>
+        🎨 Wishing you a very Happy Holi! <br>
+        May this festival splash your life with positivity and endless smiles. 😊🌸
+        </p>
+        <button onclick="startHoli()">Next 🎨</button>
+    </div>
+
+    <img src="C:\Users\Dell\OneDrive\Desktop\Holi\pic2.jpeg" class="side-img">
+
+</div>
+
+<div id="finalMessage">
+    Happy Holi!!💕🌈
+</div>
+
+<script>
+
+function startHoli(){
+
+    for(let i=0;i<120;i++){
+        let gulal = document.createElement("div");
+        gulal.classList.add("gulal");
+
+        let colors = ["red","yellow","blue","green","pink","orange","purple"];
+        gulal.style.background = colors[Math.floor(Math.random()*colors.length)];
+
+        gulal.style.left = Math.random()*window.innerWidth + "px";
+        gulal.style.top = window.innerHeight + "px";
+
+        document.body.appendChild(gulal);
+
+        setTimeout(()=>{
+            gulal.remove();
+        },3000);
+    }
+
+    setTimeout(()=>{
+        document.getElementById("mainContent").style.display="none";
+        document.getElementById("finalMessage").style.display="block";
+        document.body.style.background="linear-gradient(45deg, red, yellow, blue, pink)";
+    },2000);
+}
+
+</script>
+
+</body>
+</html>
